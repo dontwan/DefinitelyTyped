@@ -2582,7 +2582,7 @@ export class Image {
      * @return {fabric.Image} thisArg
      * @chainable
      */
-    setSrc(src: string, callback?: Function, options?: IImageOptions): Image;
+    setSrc(src: string, callback?: (image: Image, isError: boolean) => void, options?: IImageOptions): Image;
     applyResizeFilters(): void;
     /**
      * Applies filters assigned to this image (from "filters" array) or from filter param
@@ -2601,17 +2601,17 @@ export class Image {
     /**
      * Creates an instance of fabric.Image from an URL string
      * @param url URL to create an image from
-     * @param [callback] Callback to invoke when image is created (newly created image is passed as a first argument)
+     * @param [callback] Callback to invoke when image is created (newly created image is passed as a first argument). Second argument is a boolean indicating if an error occurred or not.
      * @param [imgOptions] Options object
      */
-    static fromURL(url: string, callback?: (image: Image) => void, imgOptions?: IImageOptions): Image;
+    static fromURL(url: string, callback?: (image: Image, isError: boolean) => void, imgOptions?: IImageOptions): Image;
     /**
      * Returns Image instance from an SVG element
      * @param element Element to parse
      * @param callback Callback to execute when fabric.Image object is created
      * @param [options] Options object
      */
-    static fromElement(element: SVGElement, callback: Function, options?: IImageOptions): Image;
+    static fromElement(element: SVGElement, callback: (image: Image, isError: boolean) => void, options?: IImageOptions): Image;
     /**
      * Default CSS class name for canvas
      */
